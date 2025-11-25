@@ -8,8 +8,7 @@
     "start": "next start",
     "build:frontend": "cd frontend && npm ci && npm run build",
     "build:all": "npm run build:frontend && npm run build",
-    "preserve": "npm run build:frontend",
-    "serve": "npm run build:frontend && node server/index.js"
+    "serve": "node server/index.js"
   },
   "dependencies": {
     "express": "^4.21.2",
