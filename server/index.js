@@ -62,10 +62,19 @@ function aggregateByListing(reviews) {
 const app = express();
 app.use(express.json());
 
-const distPath = path.join(__dirname, '..', 'frontend', 'dist');
-if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
+const distCandidates = [
+  path.join(process.cwd(), 'frontend', 'dist'),
+  path.join(__dirname, '..', 'frontend', 'dist')
+];
+const resolvedDist = distCandidates.find(p => fs.existsSync(path.join(p, 'index.html')));
+if (resolvedDist) {
+  app.use(express.static(resolvedDist));
 }
+
+app.get('/healthz', (req, res) => {
+  const ok = !!resolvedDist && fs.existsSync(path.join(resolvedDist, 'index.html'));
+  res.status(ok ? 200 : 500).send(ok ? 'ok' : 'missing-frontend');
+});
 
 app.get('/api/reviews/hostaway', (req, res) => {
   const dataPath = path.join(process.cwd(), 'data', 'hostaway_reviews.json');
@@ -132,12 +141,13 @@ app.get('/api/reviews/google', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  const indexFile = path.join(distPath, 'index.html');
+  const root = resolvedDist || distCandidates[0];
+  const indexFile = path.join(root, 'index.html');
   if (fs.existsSync(indexFile)) {
     res.sendFile(indexFile);
     return;
   }
-  res.status(500).send('Frontend build missing. Run npm run build:frontend during deploy.');
+  res.status(500).send('Frontend build missing. Ensure build step outputs to frontend/dist before start.');
 });
 
 const port = process.env.PORT || 3000;
