@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://flex-living-backend.vercel.app/api/$1" }
+  ]
+}
