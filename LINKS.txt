@@ -1,0 +1,3 @@
+Live App URL: https://flexliving-7ud1.onrender.com
+GitHub Repo: https://github.com/YZNamadi/FlexLiving
+AI Tool Used: Trae AI code assistant (Trae IDE)

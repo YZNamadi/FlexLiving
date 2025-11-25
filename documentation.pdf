@@ -1,0 +1,61 @@
+Flex Living – Developer Assessment Documentation
+
+Overview
+- Unified web app for manager review insights and property page display.
+- Single Render service: serves the React SPA and Next.js API routes under one domain.
+
+Tech Stack
+- Frontend: React 18, TypeScript, Vite, TailwindCSS, shadcn/ui, lucide-react, TanStack Query.
+- Backend: Next.js 14 (pages/api), Express server envelope to serve static SPA and mount APIs.
+- Build/Deploy: Render Web Service; Node default 22.16.0, health check `/healthz`.
+
+Architecture & Decisions
+- Single-domain deployment for simplicity and alignment with assessment.
+- Express serves `frontend/dist` and exposes Next.js API routes via the same server.
+- Hostaway normalization: 10-point ratings converted to 5-star for UI consistency.
+- Approval persistence: `data/approved_reviews.json` stores approved review IDs; APIs read/write it.
+- Robust static path resolution: server looks for `frontend/dist/index.html` using both `process.cwd()` and `__dirname` to avoid path issues.
+- Health endpoint: `/healthz` returns `ok` if `frontend/dist/index.html` exists; aids platform checks.
+
+Manager Dashboard
+- Filters: search, property, channel, rating bands, status (published/pending), category, date range.
+- Sorting: by date, rating, channel (implemented via client-side state).
+- Insights: monthly trend line (last 6 months), category averages (sorted), summary stats.
+- Publishing: toggle approved/published state; persists via `POST /api/reviews/approved`.
+
+Property Details Page
+- Layout aligned with Flex Living style; review section shows only approved reviews.
+- Ratings display averages and category breakdowns; channel badges (Airbnb, Booking.com, Vrbo).
+
+API Behaviors
+- GET /api/reviews/hostaway
+  - Returns { status, data: { reviews, listings } }.
+  - reviews: normalized entries with fields: id, listingName, type, status, channel, rating10, rating5, text, categories, submittedAt, guestName, source, approved.
+  - listings: per-listing aggregates: totalReviews, avg10, avg5, categoryAverages.
+- GET /api/reviews/approved
+  - Returns { approvedIds } from data/approved_reviews.json.
+- POST /api/reviews/approved
+  - Body: { id: number, approved: boolean }. Updates persisted set and returns { approvedIds }.
+- GET /api/reviews/google?placeId=...
+  - Requires GOOGLE_API_KEY. If missing or no placeId, returns { status: 'disabled' }.
+  - On success, returns normalized Google reviews with rating5 and derived rating10.
+
+Deployment
+- Render Build Command: npm run build:all (builds SPA and Next.js).
+- Render Start Command: npm run serve (Express starts; binds to process.env.PORT).
+- Health Check Path: /healthz.
+- Frontend build location: frontend/dist/index.html.
+
+Images & Favicon
+- Property images: stable HD US apartment photos (Unsplash/Picsum links), avoiding blanks.
+- Favicon: Flex Living symbol/wordmark URL applied in frontend/index.html.
+
+Findings: Google Reviews
+- Accessible via Places Details API; returns reviews with rating and text.
+- Mapping challenges: associating Google placeId with internal listings; solved by query param.
+- API key required; gracefully disabled when env is absent.
+
+Links & Tools
+- Live App: https://flexliving-7ud1.onrender.com
+- Repository: https://github.com/YZNamadi/FlexLiving
+- AI Tool Used: Trae AI code assistant (Trae IDE)
