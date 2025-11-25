@@ -66,16 +66,6 @@ const distCandidates = [
   path.join(process.cwd(), 'frontend', 'dist'),
   path.join(__dirname, '..', 'frontend', 'dist')
 ];
-function buildFrontendIfMissing() {
-  const hasIndex = distCandidates.some(p => fs.existsSync(path.join(p, 'index.html')));
-  if (!hasIndex) {
-    try {
-      require('child_process').execSync('cd frontend && npm ci && npm run build', { stdio: 'inherit' });
-    } catch {}
-  }
-}
-
-buildFrontendIfMissing();
 let resolvedDist = distCandidates.find(p => fs.existsSync(path.join(p, 'index.html')));
 if (resolvedDist) {
   app.use(express.static(resolvedDist));
