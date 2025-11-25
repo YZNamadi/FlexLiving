@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build:all",
     "start": "next start",
     "build:frontend": "cd frontend && npm ci && npm run build",
     "build:all": "npm run build:frontend && npm run build",
