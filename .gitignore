@@ -1,0 +1,25 @@
+# Node
+node_modules/
+*.log
+logs/
+
+# Next.js
+.next/
+out/
+
+# Env
+.env*
+
+# Frontend (Vite)
+frontend/node_modules/
+frontend/dist/
+
+# Testing/coverage
+coverage/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
+

@@ -1,0 +1,131 @@
+{
+  "status": "success",
+  "result": [
+    {
+      "id": 7453,
+      "type": "host-to-guest",
+      "status": "published",
+      "rating": null,
+      "publicReview": "Shane and family are wonderful! Would definitely host again :)",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 10 },
+        { "category": "communication", "rating": 10 },
+        { "category": "respect_house_rules", "rating": 10 }
+      ],
+      "submittedAt": "2020-08-21 22:45:14",
+      "guestName": "Shane Finkelstein",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "channel": "hostaway"
+    },
+    {
+      "id": 9011,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 9,
+      "publicReview": "Great location and super clean. Check-in was smooth.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 9 },
+        { "category": "communication", "rating": 8 },
+        { "category": "location", "rating": 10 }
+      ],
+      "submittedAt": "2021-03-12 18:01:10",
+      "guestName": "Emily R",
+      "listingName": "Cosy studio près du Panthéon - The Flex Paris",
+      "channel": "airbnb"
+    },
+    {
+      "id": 9012,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 7,
+      "publicReview": "Comfortable stay. A bit noisy at night.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 8 },
+        { "category": "communication", "rating": 9 },
+        { "category": "noise", "rating": 6 }
+      ],
+      "submittedAt": "2021-04-08 09:25:33",
+      "guestName": "Tom W",
+      "listingName": "Cosy studio près du Panthéon - The Flex Paris",
+      "channel": "booking.com"
+    },
+    {
+      "id": 9302,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 10,
+      "publicReview": "Amazing apartment. Stylish and quiet.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 10 },
+        { "category": "communication", "rating": 10 },
+        { "category": "location", "rating": 9 }
+      ],
+      "submittedAt": "2022-06-21 12:11:54",
+      "guestName": "Sofia L",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "channel": "airbnb"
+    },
+    {
+      "id": 9400,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 8,
+      "publicReview": "Good value for money. Wi-Fi could be faster.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 8 },
+        { "category": "communication", "rating": 9 },
+        { "category": "wifi", "rating": 6 }
+      ],
+      "submittedAt": "2022-09-02 16:41:22",
+      "guestName": "Marco D",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "channel": "expedia"
+    },
+    {
+      "id": 9551,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 6,
+      "publicReview": "Place is fine but check-in instructions were confusing.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 7 },
+        { "category": "communication", "rating": 5 }
+      ],
+      "submittedAt": "2023-02-10 08:10:02",
+      "guestName": "Nina",
+      "listingName": "Amenity-rich flat near City Center",
+      "channel": "booking.com"
+    },
+    {
+      "id": 9603,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 9,
+      "publicReview": "Loved the neighborhood and design. Will return.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 9 },
+        { "category": "communication", "rating": 9 },
+        { "category": "location", "rating": 9 }
+      ],
+      "submittedAt": "2023-06-12 14:33:22",
+      "guestName": "George",
+      "listingName": "Amenity-rich flat near City Center",
+      "channel": "airbnb"
+    },
+    {
+      "id": 9701,
+      "type": "guest-to-host",
+      "status": "published",
+      "rating": 5,
+      "publicReview": "Could be cleaner. Good communication though.",
+      "reviewCategory": [
+        { "category": "cleanliness", "rating": 5 },
+        { "category": "communication", "rating": 8 }
+      ],
+      "submittedAt": "2024-01-05 11:05:45",
+      "guestName": "Laura",
+      "listingName": "Amenity-rich flat near City Center",
+      "channel": "airbnb"
+    }
+  ]
+}
