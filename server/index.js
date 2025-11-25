@@ -63,7 +63,9 @@ const app = express();
 app.use(express.json());
 
 const distPath = path.join(__dirname, '..', 'frontend', 'dist');
-app.use(express.static(distPath));
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+}
 
 app.get('/api/reviews/hostaway', (req, res) => {
   const dataPath = path.join(process.cwd(), 'data', 'hostaway_reviews.json');
@@ -130,11 +132,15 @@ app.get('/api/reviews/google', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  const indexFile = path.join(distPath, 'index.html');
+  if (fs.existsSync(indexFile)) {
+    res.sendFile(indexFile);
+    return;
+  }
+  res.status(500).send('Frontend build missing. Run npm run build:frontend during deploy.');
 });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
 });
-
